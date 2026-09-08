@@ -1,9 +1,23 @@
 "use client"
 
 import { CheckIcon, CopyIcon } from "lucide-react"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
+function writeClipboard(text: string) {
+  const area = document.createElement("textarea")
+  area.value = text
+  area.setAttribute("readonly", "")
+  area.style.position = "fixed"
+  area.style.left = "-9999px"
+  document.body.appendChild(area)
+  area.select()
+  const ok = document.execCommand("copy")
+  area.remove()
+  if (!ok) throw new Error("copy failed")
+}
 
 export function CopyBlock({
   code,
@@ -13,11 +27,21 @@ export function CopyBlock({
   filename?: string
 }) {
   const [copied, setCopied] = useState(false)
+  const resetTimer = useRef<number>(0)
 
   async function copy() {
-    await navigator.clipboard.writeText(code)
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code)
+      } else {
+        writeClipboard(code)
+      }
+    } catch {
+      writeClipboard(code)
+    }
     setCopied(true)
-    window.setTimeout(() => setCopied(false), 1800)
+    window.clearTimeout(resetTimer.current)
+    resetTimer.current = window.setTimeout(() => setCopied(false), 2500)
   }
 
   return (
@@ -31,7 +55,11 @@ export function CopyBlock({
           size="xs"
           variant="ghost"
           onClick={copy}
-          className="text-zinc-300 hover:text-white"
+          aria-live="polite"
+          className={cn(
+            "min-w-[5.5rem] text-zinc-300 hover:text-white",
+            copied && "bg-emerald-500/15 text-emerald-300 hover:text-emerald-200"
+          )}
         >
           {copied ? <CheckIcon /> : <CopyIcon />}
           {copied ? "Copiado" : "Copiar"}

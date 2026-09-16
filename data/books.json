@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "mateus",
+    "name": "Mateus",
+    "abbrev": "Mt",
+    "chapters": 28
+  },
+  {
+    "slug": "marcos",
+    "name": "Marcos",
+    "abbrev": "Mc",
+    "chapters": 16
+  },
+  {
+    "slug": "lucas",
+    "name": "Lucas",
+    "abbrev": "Lc",
+    "chapters": 24
+  },
+  {
+    "slug": "joao",
+    "name": "João",
+    "abbrev": "Jo",
+    "chapters": 21
+  },
+  {
+    "slug": "atos",
+    "name": "Atos",
+    "abbrev": "At",
+    "chapters": 28
+  },
+  {
+    "slug": "romanos",
+    "name": "Romanos",
+    "abbrev": "Rm",
+    "chapters": 16
+  },
+  {
+    "slug": "1corintios",
+    "name": "1 Coríntios",
+    "abbrev": "1Co",
+    "chapters": 16
+  },
+  {
+    "slug": "2corintios",
+    "name": "2 Coríntios",
+    "abbrev": "2Co",
+    "chapters": 13
+  },
+  {
+    "slug": "galatas",
+    "name": "Gálatas",
+    "abbrev": "Gl",
+    "chapters": 6
+  },
+  {
+    "slug": "efesios",
+    "name": "Efésios",
+    "abbrev": "Ef",
+    "chapters": 6
+  },
+  {
+    "slug": "filipenses",
+    "name": "Filipenses",
+    "abbrev": "Fp",
+    "chapters": 4
+  },
+  {
+    "slug": "colossenses",
+    "name": "Colossenses",
+    "abbrev": "Cl",
+    "chapters": 4
+  },
+  {
+    "slug": "1tessalonicenses",
+    "name": "1 Tessalonicenses",
+    "abbrev": "1Ts",
+    "chapters": 5
+  },
+  {
+    "slug": "2tessalonicenses",
+    "name": "2 Tessalonicenses",
+    "abbrev": "2Ts",
+    "chapters": 3
+  },
+  {
+    "slug": "1timoteo",
+    "name": "1 Timóteo",
+    "abbrev": "1Tm",
+    "chapters": 6
+  },
+  {
+    "slug": "2timoteo",
+    "name": "2 Timóteo",
+    "abbrev": "2Tm",
+    "chapters": 4
+  },
+  {
+    "slug": "tito",
+    "name": "Tito",
+    "abbrev": "Tt",
+    "chapters": 3
+  },
+  {
+    "slug": "filemom",
+    "name": "Filemom",
+    "abbrev": "Fm",
+    "chapters": 1
+  },
+  {
+    "slug": "hebreus",
+    "name": "Hebreus",
+    "abbrev": "Hb",
+    "chapters": 13
+  },
+  {
+    "slug": "tiago",
+    "name": "Tiago",
+    "abbrev": "Tg",
+    "chapters": 5
+  },
+  {
+    "slug": "1pedro",
+    "name": "1 Pedro",
+    "abbrev": "1Pe",
+    "chapters": 5
+  },
+  {
+    "slug": "2pedro",
+    "name": "2 Pedro",
+    "abbrev": "2Pe",
+    "chapters": 3
+  },
+  {
+    "slug": "1joao",
+    "name": "1 João",
+    "abbrev": "1Jo",
+    "chapters": 5
+  },
+  {
+    "slug": "2joao",
+    "name": "2 João",
+    "abbrev": "2Jo",
+    "chapters": 1
+  },
+  {
+    "slug": "3joao",
+    "name": "3 João",
+    "abbrev": "3Jo",
+    "chapters": 1
+  },
+  {
+    "slug": "judas",
+    "name": "Judas",
+    "abbrev": "Jd",
+    "chapters": 1
+  },
+  {
+    "slug": "apocalipse",
+    "name": "Apocalipse",
+    "abbrev": "Ap",
+    "chapters": 22
+  }
+]

@@ -1,14 +1,16 @@
 {
-  "name": "cursor-espaco",
+  "name": "verbo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 43141 --hostname 127.0.0.1",
+    "dev": "next dev --port 43147 --hostname 127.0.0.1",
     "build": "next build",
-    "start": "next start --port 43141 --hostname 127.0.0.1",
+    "build:data": "node scripts/build-nt-data.mjs",
+    "start": "next start --port 43147 --hostname 127.0.0.1",
     "lint": "eslint"
   },
   "dependencies": {
+    "ai": "^7.0.102",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.2.6",
     "lucide-react": "^1.43.0",

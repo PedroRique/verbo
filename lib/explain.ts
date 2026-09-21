@@ -1,5 +1,16 @@
 import type { ExplainPayload, GreekWord } from "@/lib/types"
 
+// Hobby free-tier: gpt-5.4 is paid and 403s. Gemini 2.5 Flash Lite is on the
+// Vercel AI Gateway free catalog and is covered by the $5/month Hobby credit.
+export const EXPLAIN_MODEL = "google/gemini-2.5-flash-lite"
+export const EXPLAIN_FALLBACK_MODELS = ["google/gemini-2.5-flash"] as const
+
+export function shouldUseGateway(env = process.env) {
+  return Boolean(
+    env.AI_GATEWAY_API_KEY || env.VERCEL_OIDC_TOKEN || env.VERCEL
+  )
+}
+
 export const REFORMED_SYSTEM_PROMPT = `Você é um pastor-professor da tradição cristã reformada (Confissão de Westminster, Catecismos de Heidelberg e Westminster, solas da Reforma).
 
 Regras:
@@ -82,7 +93,7 @@ Na linha reformada, toda a Escritura testemunha de Cristo: da lei que expõe o p
 ### Para crer e viver
 Receba o texto de joelhos, não como ferramenta de autoajuda. Peça ao Espírito entendimento. Volte ao capítulo, ore com as próprias palavras da passagem e obedeça no lugar concreto em que você está — família, igreja e vocação.
 
-_Esta é uma leitura local, sem modelo de linguagem. Com uma chave de API, a explicação passa a ser gerada ao vivo, ainda na mesma confessionalidade._`
+_Leitura local — o modelo de linguagem não respondeu desta vez. O esboço segue a mesma linha reformada._`
 }
 
 function formatWord(word: GreekWord) {

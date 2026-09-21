@@ -7,7 +7,7 @@ App da Bíblia para ler o Novo Testamento em português, tocar o grego original 
 - **Reels**: deslize versículo a versículo, com uma palavra grega em destaque.
 - **Ler**: NT completo. Debaixo de cada versículo, cada palavra grega é um botão.
 - **Ficha da palavra**: lema, morfologia em português, glossário e Strong.
-- **Explicar**: leitura reformada do versículo (com IA se houver chave; senão, um esboço local).
+- **Explicar**: leitura reformada do versículo, com Gemini Flash Lite de graça na Vercel (senão, um esboço local).
 - **Salvos**: ficam só neste aparelho, no `localStorage`.
 
 Sem conta, sem banco, sem Antigo Testamento (ainda).
@@ -33,17 +33,26 @@ Para regenerar o NT (grego + português):
 npm run build:data
 ```
 
-## IA (opcional)
+## IA (de graça)
 
-Sem chave, o botão **Explicar** usa um esboço hermenêutico local.
+No site publicado na Vercel, **Explicar** já chama o [AI Gateway](https://vercel.com/docs/ai-gateway) com `google/gemini-2.5-flash-lite` (e cai no Flash se o Lite falhar). O Hobby inclui **US$ 5/mês** de crédito, o bastante para explicações curtas. Não precisa de chave da OpenAI.
 
-Com modelo, crie `.env.local`:
+Se a Vercel responder que o time precisa verificar um cartão (`customer_verification_required`), abra o [AI Gateway](https://vercel.com/dashboard) e cadastre um método de pagamento. O crédito mensal continua grátis; o cartão só destrava o uso.
+
+Localmente, sem variável, o botão usa o esboço reformado. Para testar o modelo no seu computador:
 
 ```bash
-OPENAI_API_KEY=sua_chave
+npx vercel link
+npx vercel env pull .env.local
 ```
 
-Na Vercel, o AI Gateway / OIDC também funciona. O prompt de sistema permanece confessante: Westminster, solas, Cristo no centro, Escritura interpreta Escritura.
+Ou crie uma chave em **AI Gateway → API Keys** e coloque em `.env.local`:
+
+```bash
+AI_GATEWAY_API_KEY=sua_chave
+```
+
+O prompt de sistema permanece confessante: Westminster, solas, Cristo no centro, Escritura interpreta Escritura.
 
 ## Fontes do texto
 

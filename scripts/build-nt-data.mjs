@@ -930,7 +930,18 @@ function generatedReflection(verse, featured) {
   return `A palavra grega ${s} (${lemma}) traz o sentido de “${g}”. Lida na linha da Reforma, o texto não nos aponta primeiro para o nosso esforço, mas para Cristo e para a graça de Deus nesta passagem.`;
 }
 
+function dataAlreadyBuilt() {
+  if (!existsSync(path.join(ROOT, "data", "books.json"))) return false;
+  if (!existsSync(path.join(ROOT, "data", "reels.json"))) return false;
+  return BOOKS.every((book) => existsSync(path.join(OUT_DIR, `${book.slug}.json`)));
+}
+
 async function main() {
+  if (process.env.SKIP_NT_BUILD === "1" || dataAlreadyBuilt()) {
+    console.log("NT já está em data/; pulando download e geração.");
+    return;
+  }
+
   await mkdir(MACULA_DIR, { recursive: true });
   await mkdir(OUT_DIR, { recursive: true });
   console.log("Baixando Bíblia Livre e MACULA (se ainda não estiverem no cache)...");

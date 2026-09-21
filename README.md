@@ -37,7 +37,11 @@ npm run build:data
 
 No site publicado na Vercel, **Explicar** já chama o [AI Gateway](https://vercel.com/docs/ai-gateway) com `google/gemini-2.5-flash-lite` (e cai no Flash se o Lite falhar). O Hobby inclui **US$ 5/mês** de crédito, o bastante para explicações curtas. Não precisa de chave da OpenAI.
 
-Se a Vercel responder que o time precisa verificar um cartão (`customer_verification_required`), abra o [AI Gateway](https://vercel.com/dashboard) e cadastre um método de pagamento. O crédito mensal continua grátis; o cartão só destrava o uso.
+**Um passo seu (de graça):** o Hobby exige um cartão cadastrado para soltar os US$ 5/mês. Não cobra se você ficar nesse crédito.
+
+1. Abra [AI Gateway](https://vercel.com/d?to=%2Fpedro-riques-projects-856104c1%2F%7E%2Fai%3Fmodal%3Dadd-credit-card).
+2. Clique em **Add credit card**.
+3. Volte no Verbo e toque **Explicar**.
 
 Localmente, sem variável, o botão usa o esboço reformado. Para testar o modelo no seu computador:
 

@@ -8,6 +8,7 @@ assert.match(explain, /google\/gemini-2\.5-flash-lite/)
 assert.match(explain, /env\.VERCEL/)
 assert.doesNotMatch(route, /openai\/gpt-5/)
 assert.match(route, /gateway\(EXPLAIN_MODEL\)/)
+assert.match(route, /x-vercel-oidc-token/)
 assert.match(route, /localExplain\(payload\)/)
 
 console.log("explain: Gemini gratuito + fallback local ok")

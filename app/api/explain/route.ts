@@ -119,14 +119,18 @@ function fallbackResponse(payload: ExplainPayload, error: unknown) {
 }
 
 function gatewayHint(message: string) {
-  if (/verification|payment method|customer_verification/i.test(message)) {
-    return "_A IA grátis da Vercel pede um cartão cadastrado só para liberar os US$ 5/mês do Hobby. Nada é cobrado se você ficar nesse crédito. Abra [AI Gateway](https://vercel.com/ai-gateway)._"
+  if (
+    /credit card|verification|payment method|customer_verification/i.test(
+      message
+    )
+  ) {
+    return "**Para ligar a IA grátis:** cadastre um cartão no AI Gateway da Vercel. Isso só destrava os US$ 5/mês do Hobby; não cobra se você ficar nesse crédito. Abra vercel.com → AI Gateway → Add credit card."
   }
   if (/authentication|OIDC|API key|No authentication/i.test(message)) {
-    return "_O AI Gateway ainda não autenticou este deploy. No painel da Vercel: AI Gateway → API Keys, crie uma chave e coloque em `AI_GATEWAY_API_KEY`._"
+    return "**O AI Gateway ainda não autenticou este deploy.** No painel da Vercel: AI Gateway → API Keys, crie uma chave e coloque em `AI_GATEWAY_API_KEY`."
   }
   if (/restricted|free tier|not available on the free/i.test(message)) {
-    return "_Este modelo saiu do catálogo grátis. O app cai no esboço local até o Gateway aceitar o Gemini Flash Lite._"
+    return "**Este modelo saiu do catálogo grátis.** O app cai no esboço local até o Gateway aceitar o Gemini Flash Lite."
   }
   return ""
 }

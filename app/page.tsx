@@ -1,8 +1,7 @@
-import reels from "@/data/reels.json"
-
 import { ReelsFeed } from "@/components/reels-feed"
-import type { ReelCard } from "@/lib/types"
+import { getReels } from "@/lib/bible"
 
-export default function HomePage() {
-  return <ReelsFeed reels={reels as ReelCard[]} />
+export default async function HomePage() {
+  const reels = await getReels()
+  return <ReelsFeed reels={reels} />
 }

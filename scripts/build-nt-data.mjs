@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { gzipSync } from "node:zlib";
 
 const ROOT = process.cwd();
 const CACHE = process.env.BIBLE_CACHE || "/tmp/bible-src";
@@ -932,8 +933,8 @@ function generatedReflection(verse, featured) {
 
 function dataAlreadyBuilt() {
   if (!existsSync(path.join(ROOT, "data", "books.json"))) return false;
-  if (!existsSync(path.join(ROOT, "data", "reels.json"))) return false;
-  return BOOKS.every((book) => existsSync(path.join(OUT_DIR, `${book.slug}.json`)));
+  if (!existsSync(path.join(ROOT, "data", "reels.json.gz"))) return false;
+  return BOOKS.every((book) => existsSync(path.join(OUT_DIR, `${book.slug}.json.gz`)));
 }
 
 async function main() {
@@ -1006,8 +1007,8 @@ async function main() {
       })),
     };
 
-    const file = path.join(OUT_DIR, `${book.slug}.json`);
-    await writeFile(file, JSON.stringify(outBook));
+    const file = path.join(OUT_DIR, `${book.slug}.json.gz`);
+    await writeFile(file, gzipSync(Buffer.from(JSON.stringify(outBook))));
     index.push({
       slug: book.slug,
       name: book.name,
@@ -1082,7 +1083,7 @@ async function main() {
   }
 
   await writeFile(path.join(ROOT, "data", "books.json"), JSON.stringify(index, null, 2));
-  await writeFile(path.join(ROOT, "data", "reels.json"), JSON.stringify(reels));
+  await writeFile(path.join(ROOT, "data", "reels.json.gz"), gzipSync(Buffer.from(JSON.stringify(reels))));
   console.log(`Livros: ${index.length}`);
   console.log(`Reels: ${reels.length} (${reels.filter((r) => r.curated).length} curatoriais)`);
 }

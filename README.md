@@ -21,6 +21,12 @@ npm run dev
 
 Abre em [http://127.0.0.1:43147](http://127.0.0.1:43147).
 
+Os livros do NT vão comprimidos em `data/nt/*.json.gz` para o deploy na Vercel caber. Para conferir:
+
+```bash
+npm run check:data
+```
+
 Para regenerar o NT (grego + português):
 
 ```bash
